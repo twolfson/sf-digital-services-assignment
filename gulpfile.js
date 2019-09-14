@@ -4,7 +4,7 @@ const gulpPug = require('gulp-pug');
 const pkg = require('./package.json');
 
 // Define our tasks
-gulp.task('build-html', function buildViews () {
+exports['build-html'] = function buildHtml () {
   return gulp.src('server/views/**/*.pug')
     .pipe(gulpPug({
       data: {
@@ -12,6 +12,6 @@ gulp.task('build-html', function buildViews () {
       }
     }))
     .pipe(gulp.dest('build'));
-});
+};
 
-gulp.task('build', ['build-html']);
+exports.build = gulp.parallel(exports['build-html']);
