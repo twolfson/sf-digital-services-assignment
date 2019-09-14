@@ -1,0 +1,32 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+
+    //- Pulled from https://sf.gov/
+    link(rel="shortcut icon", href="/browser/images/favicon.ico" type="image/vnd.microsoft.icon")
+
+    link(rel="stylesheet", href="/browser/css/index.css")
+    //- https://getbootstrap.com/docs/4.3/getting-started/download/
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
+
+  body
+    .container
+      h1 Hello World!
+
+      //- Define a common footer
+      hr
+      p.text-center
+        = "Made with "
+        span(aria-label="love")= "<3"
+        = " by "
+        a(href="https://github.com/twolfson/sf-digital-services-assignment") Todd Wolfson
+        = " under the "
+        a(href="https://github.com/twolfson/sf-digital-services-assignment/blob/master/UNLICENSE") UNLICENSE
+        br
+        span.text-muted
+          = "Hosted by "
+          a(href="https://pages.github.com/") GitHub Pages
+      p.text-center
+        a.text-muted(href="https://github.com/twolfson/sf-digital-services-assignment/tree/" + encodeURIComponent(semverVersion))
+= "Version " + semverVersion
