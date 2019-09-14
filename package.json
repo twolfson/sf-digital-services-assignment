@@ -13,12 +13,14 @@
   },
   "scripts": {
     "build": "gulp build",
+    "develop": "gulp develop",
     "start": "(test -d build/ || npm run build) && serve build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {},
   "devDependencies": {
     "gulp": "~4.0.2",
+    "gulp-livereload": "~4.0.1",
     "gulp-pug": "~4.0.1",
     "serve": "~11.1.0"
   },
