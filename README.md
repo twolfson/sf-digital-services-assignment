@@ -18,6 +18,10 @@ Gist:
 - React, while its overkill for this project (nothing too interactive), it's a familiar code base for the rest of the team
     - Other choices would be Angular (team is moving away from), hyperscript (fastest to setup, smallest footprint, not too familiar for team), or jQuery
     - In retrospect, maybe we should do server side rendering for better i18n? We don't want to send the entire i18n translation set in JS
+- Pug for server-side templating as it:
+    - Is very similar to Slim which is established as a template language in https://github.com/Exygy/sf-dahlia-web
+    - Prevents missed close tags, which can cause inconsistent rendering
+    - Could set up React server-side templating but we are barely using this as is; not worth the effort
 
 ### Double check we have
 - Tests, including CI
