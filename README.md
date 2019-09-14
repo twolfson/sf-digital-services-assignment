@@ -24,6 +24,7 @@ Gist:
     - Could set up React server-side templating but we are barely using this as is; not worth the effort
 - Missing
     - Error monitoring, usually would use Sentry or similar
+    - Analytics, usually would use Google Analytics or Mixpanel
 
 ### Double check we have
 - Tests, including CI
