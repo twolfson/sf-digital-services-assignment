@@ -12,7 +12,13 @@
     "url": "https://github.com/twolfson/sf-digital-services-assignment/issues"
   },
   "scripts": {
+    "build": "gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "~4.0.2",
+    "gulp-pug": "~4.0.1"
   },
   "license": "CC0-1.0",
   "private": true
