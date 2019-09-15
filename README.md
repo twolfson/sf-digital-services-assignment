@@ -38,6 +38,7 @@ Gist:
 - CSS that matches
 - Bonus feature
 - Viewport support, or conclude it makes less sense for tables
+- Handled all TODOs
 
 ## License
 As of Sep 14 2019, Todd Wolfson has relesaed this repository and its contents to the public domain.
