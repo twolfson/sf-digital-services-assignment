@@ -5,30 +5,47 @@ var mohcdComponent = require('../../browser/js/mohcd-component.js');
 var mochdTestData = require('../test-files/9rdx-httc-reduced.json');
 var sinon = require('sinon');
 
+// Create test utilities
+function createSinonServer(responses) {
+  before(function stubXhr () {
+    var sinonServer = this.sinonServer = sinon.createFakeServer();
+    responses.forEach(function (response) {
+      sinonServer.respondWith.apply(sinonServer, response);
+    });
+    this.sinonServer.respond();
+    console.log(this.sinonServer);
+  });
+  after(function cleanup () {
+    this.sinonServer.restore();
+    delete this.sinonServer;
+  });
+}
+function initMohcdComponent() {
+  before(function (cb) {
+    this.testContainer = h('div');
+    mohcdComponent.init(this.testContainer);
+
+    // Add a delay for request to propagate as well as content render
+    setTimeout(cb, 15 /* ms */);
+  });
+  after(function () {
+    delete this.testContainer;
+  });
+}
+
 // Define our tests
 describe('An MOHCD component loading data', function () {
   describe('with a successful load', function () {
-    before(function stubXhr () {
-      this.sinonServer = sinon.useFakeXMLHttpRequest();
-      this.sinonReqs = [];
-      this.sinonServer.onCreate = function (req) {
-        expect(req.url).to.contain('https://data.sfgov.org/');
-        req.respond(200, {'Content-Type': 'application/json'}, JSON.stringify(mochdTestData));
-        this.sinonReqs.push(req);
-      };
-    });
-    before(function () {
-      var testContainer = h('div');
-      mohcdComponent.init(testContainer);
-    });
-    after(function cleanup () {
-      this.sinonServer.restore();
-      delete this.sinonServer;
-      delete this.sinonReqs;
-    });
+    createSinonServer([
+      ['GET', 'https://data.sfgov.org/resource/9rdx-httc.json',
+        [200, {'Content-Type': 'application/json'}, JSON.stringify(mochdTestData)]]
+    ]);
+    initMohcdComponent();
 
     it('renders data', function () {
-      expect(this.sinonReqs).to.have.length(1);
+      // Sanity check we hit our fake server
+      expect(this.sinonServer.requests).to.have.length(1);
+      expect(this.testContainer.textContent).to.contain('foo');
     });
   });
 
