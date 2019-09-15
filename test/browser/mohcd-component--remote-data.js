@@ -2,7 +2,7 @@
 var expect = require('chai').expect;
 var h = require('hyperscript');
 var mohcdComponent = require('../../browser/js/mohcd-component.js');
-var mochdTestData = require('../test-files/9rdx-httc-reduced.json');
+var mohcdTestData = require('../test-files/9rdx-httc-reduced.json');
 var sinon = require('sinon');
 
 // Create test utilities
@@ -31,11 +31,11 @@ function initMohcdComponent() {
 }
 
 // Define our tests
-describe('An MOHCD component loading data', function () {
+describe('An MOHCD component loading remote data', function () {
   describe('with a successful load', function () {
     createSinonServer([
       ['GET', 'https://data.sfgov.org/resource/9rdx-httc.json',
-        [200, {'Content-Type': 'application/json'}, JSON.stringify(mochdTestData)]]
+        [200, {'Content-Type': 'application/json'}, JSON.stringify(mohcdTestData)]]
     ]);
     initMohcdComponent();
 

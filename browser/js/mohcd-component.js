@@ -62,6 +62,10 @@ exports.initWithLocalData = function (containerEl, data) {
       ]),
       // DEV: Look at `test/test-files/9rdx-httc-reduced.json` for reference entries
       h('tbody', data.map(function (row) {
+        var percentAffordable = (row.affordable_units/row.total_units * 100);
+        if (isNaN(percentAffordable) || percentAffordable > 100) {
+          percentAffordable = 100;
+        }
         return h('tr', [
           // TODO: Is data practical in this format for a11y? (e.g. 243 linked to column)
           // 1615 Sutter St
@@ -69,7 +73,7 @@ exports.initWithLocalData = function (containerEl, data) {
           h('td', row.neighborhood),
           h('td', row.affordable_units),
           h('td', row.total_units),
-          h('td', (row.affordable_units/row.total_units * 100).toFixed(1) + '%'),
+          h('td', percentAffordable.toFixed(1) + '%'),
           h('td', row.year_affordability_began),
         ]);
       }))
