@@ -37,13 +37,14 @@ gulp.task('build-html', function buildHtml() {
 });
 
 gulp.task('build-css', function buildImages() {
-  return gulp.src([
-        require.resolve('leaflet/dist/leaflet.css'),
-        'browser/css/**/*.css',
-      ])
-      .pipe(gulpConcat('index.css'))
-      .pipe(gulp.dest('build/css'))
-      .pipe(gulpLivereload());
+  return gulp
+    .src([
+      require.resolve('leaflet/dist/leaflet.css'),
+      'browser/css/**/*.css'
+    ])
+    .pipe(gulpConcat('index.css'))
+    .pipe(gulp.dest('build/css'))
+    .pipe(gulpLivereload());
 });
 
 gulp.task('build-images', gulp.parallel([
