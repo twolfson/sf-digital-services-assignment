@@ -31,6 +31,7 @@ Gist:
 - ES version rationale... still depends on how we build
 - Using XHR instead of newer APIs like `fetch` for older browser support (saw IE8+ in new `sf.gov` website)
 - Document `publish-to-gh-pages` and releasing
+- Comment about async loading of map ideal but... yea...
 - Missing
     - Error monitoring, usually would use Sentry or similar
     - Analytics, usually would use Google Analytics or Mixpanel

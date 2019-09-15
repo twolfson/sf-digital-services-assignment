@@ -108,7 +108,17 @@ exports.initWithLocalData = function (containerEl, data) {
 
     // Otherwise, add a marker to our map
     var marker = L.marker([row.latitude, row.longitude]);
-    marker.bindPopup(row._address);
+    marker.bindPopup(h('div', [
+      row._address,
+      h('br'),
+      'Affordable units: ' + row.affordable_units,
+      h('br'),
+      'Total units: ' + row.total_units,
+      h('br'),
+      '% affordable units: ' + row._percentAffordable.toFixed(1) + '%',
+      h('br'),
+      'Year affordability began: ' + row.year_affordability_began
+    ]));
     marker.addTo(mohcdMap);
   });
 };
