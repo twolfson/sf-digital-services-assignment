@@ -35,6 +35,12 @@ gulp.task('build-html', function buildHtml () {
     .pipe(gulpLivereload());
 });
 
+gulp.task('build-css', function buildImages () {
+  return gulp.src('browser/css/**/*')
+    .pipe(gulp.dest('build/css'))
+    .pipe(gulpLivereload());
+});
+
 gulp.task('build-images', function buildImages () {
   return gulp.src('browser/images/**/*')
     .pipe(gulp.dest('build/images'))
@@ -71,7 +77,7 @@ gulp.task('build-js', function buildJs () {
 
 gulp.task('build', gulp.series(
   'clean-build',
-  gulp.parallel('build-html', 'build-images', 'build-js')
+  gulp.parallel('build-html', 'build-css', 'build-images', 'build-js')
 ));
 
 gulp.task('develop', gulp.series('build', function develop () {
@@ -80,6 +86,7 @@ gulp.task('develop', gulp.series('build', function develop () {
   config.minifyAssets = false;
 
   // When one of our source files changes, re-run its task
+  gulp.watch('browser/css/**/*', gulp.parallel('build-css'));
   gulp.watch('browser/images/**/*', gulp.parallel('build-images'));
   gulp.watch('browser/js/**/*', gulp.parallel('build-js'));
   gulp.watch('server/views/**/*.pug', gulp.parallel('build-html'));

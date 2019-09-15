@@ -1,0 +1,9 @@
+/* DEV: In a larger site, we'd prefer a full SASS setup in a format similar to inuit.css */
+/*   However, in this context, we'll handle our one-offs as they appear */
+
+/* Global unique elements */
+#mohcd-data {
+  display: block;
+  height: 400px;
+  overflow: auto;
+}
