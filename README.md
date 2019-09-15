@@ -25,6 +25,7 @@ Gist:
 - Not stripping down data as it's small (35kb gzipped)
 - Leveraging CORS, could self host but it's more work and data goes out of date
 - LiveReload
+- ES version rationale... still depends on how we build
 - Missing
     - Error monitoring, usually would use Sentry or similar
     - Analytics, usually would use Google Analytics or Mixpanel

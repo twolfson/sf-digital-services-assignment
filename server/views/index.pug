@@ -10,10 +10,18 @@ html(lang="en")
     //- https://getbootstrap.com/docs/4.3/getting-started/download/
     link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T", crossorigin="anonymous")
 
+    title SF MOHCD affordable rental portfolio
   body
     .container
-      h1 Hello World!
-
+      h1
+        = "SF "
+        abbr(title="Mayor's Office of Housing and Community Development") MOHCD
+        = " affordable rental portfolio"
+      p
+        | This webpage presents an analysis of the data from SF's MOHCD's dataset on affordable housing
+        br
+        = "The original dataset can be found on "
+        a(href="https://data.sfgov.org/Housing-and-Buildings/Mayor-s-Office-of-Housing-and-Community-Developmen/9rdx-httc") DataSF's website
       //- Define a common footer
       hr
       p.text-center
@@ -22,7 +30,7 @@ html(lang="en")
         = " by "
         a(href="https://github.com/twolfson/sf-digital-services-assignment") Todd Wolfson
         = " under the "
-        a(href="https://github.com/twolfson/sf-digital-services-assignment/blob/master/UNLICENSE") UNLICENSE
+        a(href="https://github.com/twolfson/sf-digital-services-assignment/blob/master/LICENSE") Creative Common Zero License
         br
         span.text-muted
           = "Hosted by "
