@@ -32,6 +32,7 @@ Gist:
 - Using XHR instead of newer APIs like `fetch` for older browser support (saw IE8+ in new `sf.gov` website)
 - Document `publish-to-gh-pages` and releasing
 - Comment about async loading of map ideal but... yea...
+- Markers are in linear positions due to low resolution for latitude
 - Missing
     - Error monitoring, usually would use Sentry or similar
     - Analytics, usually would use Google Analytics or Mixpanel

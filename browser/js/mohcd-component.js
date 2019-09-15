@@ -4,6 +4,9 @@ var L = window.L; // Loaded via Leaflet CDN
 
 // Define our constants
 var MOHCD_DATA_URL = 'https://data.sfgov.org/resource/9rdx-httc.json';
+var DEFAULT_MAP_LATITUDE = 37.7749;
+var DEFAULT_MAP_LONGITUDE = -122.4194;
+var DEFAULT_MAP_ZOOM = 12;
 
 // Export our init handler
 exports.init = function (containerEl) {
@@ -93,7 +96,7 @@ exports.initWithLocalData = function (containerEl, data) {
               }
             }, 'View on map')
           ])
-        ])
+        ]);
       }))
     ])
   );
@@ -102,11 +105,11 @@ exports.initWithLocalData = function (containerEl, data) {
   containerEl.appendChild(mapContainerEl);
   var mohcdMap = L.map(mapContainerEl);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
   }).addTo(mohcdMap);
 
   // Zoom to SF
-  mohcdMap.setView([37.7749 /* lat */, -122.4194 /* lng */], 12 /* zoom */);
+  mohcdMap.setView([DEFAULT_MAP_LATITUDE, DEFAULT_MAP_LONGITUDE], DEFAULT_MAP_ZOOM);
 
   // Add our markers
   data.forEach(function (row) {
