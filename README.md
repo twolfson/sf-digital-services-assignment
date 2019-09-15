@@ -40,12 +40,15 @@ Gist:
 
 ### Double check we have
 - Tests, including CI
+    - Loading data success/failure (sinon mocking)
+    - Showing expected data, not showing unexpected data
 - Link to GitHub pages if we go that route
 - Form of cache busting for assets (either timestamp or md5)
 - CSS that matches
 - Bonus feature
 - Viewport support, or conclude it makes less sense for tables
 - Handled all TODOs
+- a11y double check
 
 ## License
 As of Sep 14 2019, Todd Wolfson has relesaed this repository and its contents to the public domain.
