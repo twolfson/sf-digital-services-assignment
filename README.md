@@ -41,14 +41,14 @@ Our architecture is as follows:
 
 - JavaScript, version ECMAScript 5 for both browser and server. We felt this was a good middleground for supporting older browsers without adding too much tooling
     - We did see IE8+ comment on the <https://sf.gov/> site which helped inform our decision
-- [Gulp][] and [Browserify][] for asset bundling. We chose these as they are easy to maintain, iterate on, and they grow well up to a decent level of complexity. Additionally, we wanted to avoid any time sinks with configuring [Webpack][]
+- [Gulp][] and [Browserify][] for asset bundling. These are easy to maintain and grow well with complexity. Additionally, we wanted to avoid any time sinks with configuring [Webpack][]
 - Vanilla JavaScript with [hyperscript][] for our browser components
-    - We had React on the roadmap but our initial iteration with vanilla JS worked very well and we were running out of time for additional features
+    - React was on the roadmap but vanilla JS worked very well initially and we were running low on time for the second half of the assignment
     - If this project were to keep on being worked on/growing, we'd likely move to a larger framework (e.g. React)
-    - Additional choices on the table: Angular (as team is already familiar with this but they're moving away from it), vanilla JS with jQuery (didn't have complex hierarchies to deal with, doesn't add much nowadays)
+    - Additional considered choices: Angular (team already familiar with it but moving away from it), vanilla JS with jQuery (more useful for complex hierarchies, doesn't add much nowadays)
 - [Pug][] for server-side templating
-    - Is very similar to Slim which is established as a template language in <https://github.com/Exygy/sf-dahlia-web>
-    - Prevents missed close tags, which can cause inconsistent rendering
+    - Similar to Slim which is team is familiar with (<https://github.com/Exygy/sf-dahlia-web>)
+    - Prevents missed close tags, which can cause inconsistent rendering across browsers
 
 [Gulp]: https://gulpjs.com/
 [Browserify]: https://github.com/browserify/browserify
@@ -60,23 +60,23 @@ We made the following architectural decisions:
 
 - No server runtime except for development
     - Reason: Data is static (i.e. entries in table/map are consistent). This could be a feature in the future (e.g. add/remove attributes to table)
-    - Potential future drawbacks: Localization exclusive to server can provide better experience as minimizes data to send
-- No server-side rendering of data
-    - Reason: If we added this, then interactivity would have to either extract JSON data from our HTML or load it again. This is a poor experience for mobile users (i.e. more processing or more bandwidth respectively). As a result, we skipped it
-- Won't strip down MOHCD data as it's small (35kb gzipped)
-- Leverage already hosted data via CORS. We could self host but it's more work and data would out of date
+    - Potential future drawbacks: Localization on the server can provide better experience as minimizes bandwidth usage
+- No server-side rendering of MOHCD data
+    - Reason: If we added this, then interactivity would have to either extract data from our HTML or load it again. This is a poor experience for mobile users (i.e. more processing or bandwidth respectively)
+- No trimming of MOHCD data as it's small enough (35kb gzipped)
+- Use data directly from DataSF's website via CORS. We could self host but it's more work and data would out of date
 
-We excluded the following functionality due to time constraints or as explained below:
+We excluded the following functionality due to time constraints:
 
 - Error monitoring, usually would use Sentry or similar
 - Analytics, usually would use Google Analytics or Mixpanel
-- Cache busting, ran out of time for the assignment. An outline would be updating `gulpfile.js` to process HTML after CSS and JS, then using the MD5 digests of those files in the template rendering
-- Asynchronous loading of heavier components (e.g. map). Ran out of time on this
+- Cache busting. An outline would be updating `gulpfile.js` to process HTML after CSS and JS, then using the MD5 digests of those files in the template rendering
+- Asynchronous loading of heavier components (e.g. map)
 
 Our release workflow is different from our typical professional one:
 
 - Normally we would submit a PR and squash commits
-- Instead adopted typical solo contributor open source workflow where I still use `git tag` to tag releases but entire commit history is visible
+- Instead used solo contributor open source workflow where I still use `git tag` to tag releases but entire commit history is visible
 - Rationale: Using squash technique is additional work that might hide my thought and work process
 
 ### Development
