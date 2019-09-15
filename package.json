@@ -14,7 +14,7 @@
   "scripts": {
     "build": "gulp build",
     "develop": "gulp develop",
-    "publish-to-gh-pages": "npm run build && git diff --exit-code && gh-pages --dist build --branch gh-pages",
+    "publish-to-gh-pages": "ENV=production npm run build && git diff --exit-code && gh-pages --dist build --branch gh-pages",
     "start": "(test -d build/ || npm run build) && serve build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
