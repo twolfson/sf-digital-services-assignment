@@ -1,9 +1,9 @@
 // Load in our dependencies
-const gulp = require('gulp');
-const gulpLivereload = require('gulp-livereload');
-const gulpPug = require('gulp-pug');
-const pkg = require('./package.json');
-const server = require('./server/index.js');
+var gulp = require('gulp');
+var gulpLivereload = require('gulp-livereload');
+var gulpPug = require('gulp-pug');
+var pkg = require('./package.json');
+var server = require('./server/index.js');
 
 // Define our tasks
 gulp.task('build-html', function buildHtml () {

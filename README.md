@@ -26,6 +26,7 @@ Gist:
 - Leveraging CORS, could self host but it's more work and data goes out of date
 - LiveReload
 - ES version rationale... still depends on how we build
+- Using XHR instead of newer APIs like `fetch` for older browser support (saw IE8+ in new `sf.gov` website)
 - Missing
     - Error monitoring, usually would use Sentry or similar
     - Analytics, usually would use Google Analytics or Mixpanel
@@ -36,6 +37,7 @@ Gist:
 - Form of cache busting for assets (either timestamp or md5)
 - CSS that matches
 - Bonus feature
+- Viewport support, or conclude it makes less sense for tables
 
 ## License
 As of Sep 14 2019, Todd Wolfson has relesaed this repository and its contents to the public domain.
