@@ -14,9 +14,14 @@
   "scripts": {
     "build": "gulp build",
     "develop": "gulp develop",
+    "lint": "echo \"Missing linter\" && exit 1",
     "publish-to-gh-pages": "ENV=production npm run build && git diff --exit-code && gh-pages --dist build --branch gh-pages",
     "start": "(test -d build/ || npm run build) && serve build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run test-browser && npm run lint",
+    "test-browser": "npm run build && npm run test-karma-single",
+    "test-karma-continuous": "karma start --no-single-run",
+    "test-karma-develop": "karma start --no-single-run --browsers Chrome",
+    "test-karma-single": "karma start",
   },
   "dependencies": {},
   "devDependencies": {
