@@ -114,6 +114,8 @@ exports.initWithLocalData = function (containerEl, data) {
   // Add our markers
   data.forEach(function (row) {
     // TODO: Add test for missing lat/lng
+    // TODO: Add test for clicking on button to open marker
+    // TODO: Add test to verify marker has address info
     // If we're missing data, skip this row
     if (!row.latitude || !row.longitude) {
       return;
