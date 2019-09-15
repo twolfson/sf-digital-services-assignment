@@ -23,6 +23,7 @@ gulp.task('develop', gulp.series('build', function develop () {
   // When one of our source files changes, re-run its task
   gulp.watch('server/views/**/*.pug', gulp.parallel('build-html'));
 
-  // Start our LiveReload server
+  // Start our LiveReload server and development server
   gulpLivereload();
+  server.start();
 }));
