@@ -12,8 +12,8 @@ function createSinonServer(responses) {
     responses.forEach(function (response) {
       sinonServer.respondWith.apply(sinonServer, response);
     });
-    this.sinonServer.respond();
-    console.log(this.sinonServer);
+    this.sinonServer.autoRespond = true;
+    this.sinonServer.respondImmediately = true;
   });
   after(function cleanup () {
     this.sinonServer.restore();
@@ -21,12 +21,9 @@ function createSinonServer(responses) {
   });
 }
 function initMohcdComponent() {
-  before(function (cb) {
+  before(function () {
     this.testContainer = h('div');
     mohcdComponent.init(this.testContainer);
-
-    // Add a delay for request to propagate as well as content render
-    setTimeout(cb, 15 /* ms */);
   });
   after(function () {
     delete this.testContainer;
@@ -45,7 +42,9 @@ describe('An MOHCD component loading data', function () {
     it('renders data', function () {
       // Sanity check we hit our fake server
       expect(this.sinonServer.requests).to.have.length(1);
-      expect(this.testContainer.textContent).to.contain('foo');
+
+      // Verify our expected content exists
+      expect(this.testContainer.textContent).to.contain('1680 Eddy St');
     });
   });
 
