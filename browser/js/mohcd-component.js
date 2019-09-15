@@ -1,5 +1,6 @@
 // Load in our dependencies
 var h = require('hyperscript');
+var L = window.L; // Loaded via Leaflet CDN
 
 // Define our constants
 var MOHCD_DATA_URL = 'https://data.sfgov.org/resource/9rdx-httc.json';
@@ -45,9 +46,21 @@ exports.initWithRemoteData = function (containerEl, dataUrl) {
 };
 
 exports.initWithLocalData = function (containerEl, data) {
+  // Extend our data for reuse across our subcomponents
+  data.forEach(function (row) {
+    var percentAffordable = (row.affordable_units / row.total_units * 100);
+    if (isNaN(percentAffordable) || percentAffordable > 100) {
+      percentAffordable = 100;
+    }
+    row._percentAffordable = percentAffordable;
+
+    // Extend our data
+    row._address = row.street_number + ' ' + row.street_name + ' ' + (row.street_type || '');
+  });
+
   containerEl.innerHTML = '';
   containerEl.appendChild(
-    h('table#mohcd-data.table', [
+    h('table#mohcd-table.table', [
       // TODO: Verify ChromeVox appreciates `thead`, pretty sure it's nice
       h('thead', [
         h('tr', [
@@ -62,21 +75,40 @@ exports.initWithLocalData = function (containerEl, data) {
       ]),
       // DEV: Look at `test/test-files/9rdx-httc-reduced.json` for reference entries
       h('tbody', data.map(function (row) {
-        var percentAffordable = (row.affordable_units / row.total_units * 100);
-        if (isNaN(percentAffordable) || percentAffordable > 100) {
-          percentAffordable = 100;
-        }
         return h('tr', [
-          // TODO: Is data practical in this format for a11y? (e.g. 243 linked to column)
-          // 1615 Sutter St
-          h('td', row.street_number + ' ' + row.street_name + ' ' + (row.street_type || '')),
+          h('td', row._address),
           h('td', row.neighborhood),
+          // TODO: Is data practical in this format for a11y? (e.g. 243 linked to column)
           h('td', row.affordable_units),
           h('td', row.total_units),
-          h('td', percentAffordable.toFixed(1) + '%'),
+          h('td', row._percentAffordable.toFixed(1) + '%'),
           h('td', row.year_affordability_began)
         ]);
       }))
     ])
   );
+
+  var mapContainerEl = h('div#mohcd-map');
+  containerEl.appendChild(mapContainerEl);
+  var mohcdMap = L.map(mapContainerEl);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+  }).addTo(mohcdMap);
+
+  // Zoom to SF
+  mohcdMap.setView([37.7749 /* lat */, -122.4194 /* lng */], 12 /* zoom */);
+
+  // Add our markers
+  data.forEach(function (row) {
+    // TODO: Add test for missing lat/lng
+    // If we're missing data, skip this row
+    if (!row.latitude || !row.longitude) {
+      return;
+    }
+
+    // Otherwise, add a marker to our map
+    var marker = L.marker([row.latitude, row.longitude]);
+    marker.bindPopup(row._address);
+    marker.addTo(mohcdMap);
+  });
 };

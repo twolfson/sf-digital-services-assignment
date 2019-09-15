@@ -2,8 +2,12 @@
 /*   However, in this context, we'll handle our one-offs as they appear */
 
 /* Global unique elements */
-#mohcd-data {
+#mohcd-table {
   display: block;
   height: 400px;
   overflow: auto;
+}
+
+#mohcd-map {
+  height: 400px;
 }
