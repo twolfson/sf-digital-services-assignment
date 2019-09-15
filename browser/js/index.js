@@ -3,7 +3,7 @@ var mohcdComponent = require('./mohcd-component.js');
 
 // When the page is loaded
 // https://caniuse.com/#feat=domcontentloaded
-window.addEventListener('DOMContentLoaded', function handleDOMContentLoaded (evt) {
+window.addEventListener('DOMContentLoaded', function handleDOMContentLoaded(evt) {
   // Initialize our MOHCD component into its container
   var containerEl = document.getElementById('mohcd-container');
   if (!containerEl) {

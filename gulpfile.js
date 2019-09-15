@@ -20,11 +20,11 @@ var config = {
 };
 
 // Define our tasks
-gulp.task('clean-build', function cleanBuild (cb) {
+gulp.task('clean-build', function cleanBuild(cb) {
   rimraf('build', cb);
 });
 
-gulp.task('build-html', function buildHtml () {
+gulp.task('build-html', function buildHtml() {
   return gulp.src('server/views/**/*.pug')
     .pipe(gulpPug({
       data: {
@@ -35,13 +35,13 @@ gulp.task('build-html', function buildHtml () {
     .pipe(gulpLivereload());
 });
 
-gulp.task('build-css', function buildImages () {
+gulp.task('build-css', function buildImages() {
   return gulp.src('browser/css/**/*')
     .pipe(gulp.dest('build/css'))
     .pipe(gulpLivereload());
 });
 
-gulp.task('build-images', function buildImages () {
+gulp.task('build-images', function buildImages() {
   return gulp.src('browser/images/**/*')
     .pipe(gulp.dest('build/images'))
     .pipe(gulpLivereload());
@@ -52,7 +52,7 @@ gulp.task('build-images', function buildImages () {
 // DEV: Keep up to date with `gulpfile.js`. If it's too big, then move to a separate file or `package.json`
 var browserifyObj = browserify({cache: {}, pacakgeCache: {}});
 browserifyObj.add(__dirname + '/browser/js/index.js');
-gulp.task('build-js', function buildJs () {
+gulp.task('build-js', function buildJs() {
   // Generate a stream via browserify
   var jsStream = browserifyObj.bundle();
   if (config.allowFailures) {
@@ -81,7 +81,7 @@ gulp.task('build', gulp.series(
   gulp.parallel('build-html', 'build-css', 'build-images', 'build-js')
 ));
 
-gulp.task('develop', gulp.series('build', function develop () {
+gulp.task('develop', gulp.series('build', function develop() {
   // Set up our tasks to allow failures
   config.allowFailures = true;
   config.minifyAssets = false;
@@ -101,5 +101,5 @@ gulp.task('develop', gulp.series('build', function develop () {
   browserifyObj.on('update', gulp.parallel('build-js'));
   // DEV: We need to run `bundle` after our `watchify` is bound in order to register our files
   // DEV: We need to pipe data out of it so we get to an `end` event
-browserifyObj.bundle().on('data', function () {});
+  browserifyObj.bundle().on('data', function () {});
 }));

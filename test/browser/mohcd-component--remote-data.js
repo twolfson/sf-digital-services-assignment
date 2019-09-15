@@ -7,7 +7,7 @@ var sinon = require('sinon');
 
 // Create test utilities
 function createSinonServer(responses) {
-  before(function stubXhr () {
+  before(function stubXhr() {
     var sinonServer = this.sinonServer = sinon.createFakeServer();
     responses.forEach(function (response) {
       sinonServer.respondWith.apply(sinonServer, response);
@@ -15,7 +15,7 @@ function createSinonServer(responses) {
     this.sinonServer.autoRespond = true;
     this.sinonServer.respondImmediately = true;
   });
-  after(function cleanup () {
+  after(function cleanup() {
     this.sinonServer.restore();
     delete this.sinonServer;
   });
@@ -53,12 +53,12 @@ describe('An MOHCD component loading remote data', function () {
       ['GET', 'https://data.sfgov.org/resource/9rdx-httc.json',
         [500, {}, 'Internal server error']]
     ]);
-    before(function stubConsoleError () {
+    before(function stubConsoleError() {
       sinon.stub(console, 'error');
     });
     initMohcdComponent();
-    after(function cleanup () {
-      console.error.restore();
+    after(function cleanup() {
+      console.error.restore(); // eslint-disable-line no-console
     });
 
     it('renders an error', function () {

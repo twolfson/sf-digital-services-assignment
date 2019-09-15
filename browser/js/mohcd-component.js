@@ -12,7 +12,7 @@ exports.init = function (containerEl) {
 exports.initWithRemoteData = function (containerEl, dataUrl) {
   // Define our post-load handlers
   function handleError(err) {
-    console.error(err);
+    console.error(err); // eslint-disable-line no-console
     containerEl.textContent = 'Failed to load MOHCD data. Error: ' + err.message;
   }
   function handleData(data) {
@@ -57,12 +57,12 @@ exports.initWithLocalData = function (containerEl, data) {
           h('th', 'Total units'),
           // TODO: Ensure aria reads this as `%` (not percent sign or similar)
           h('th', '% affordable units'),
-          h('th', 'Year affordability began'),
-        ]),
+          h('th', 'Year affordability began')
+        ])
       ]),
       // DEV: Look at `test/test-files/9rdx-httc-reduced.json` for reference entries
       h('tbody', data.map(function (row) {
-        var percentAffordable = (row.affordable_units/row.total_units * 100);
+        var percentAffordable = (row.affordable_units / row.total_units * 100);
         if (isNaN(percentAffordable) || percentAffordable > 100) {
           percentAffordable = 100;
         }
@@ -74,9 +74,9 @@ exports.initWithLocalData = function (containerEl, data) {
           h('td', row.affordable_units),
           h('td', row.total_units),
           h('td', percentAffordable.toFixed(1) + '%'),
-          h('td', row.year_affordability_began),
+          h('td', row.year_affordability_began)
         ]);
       }))
     ])
   );
-}
+};

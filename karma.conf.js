@@ -31,7 +31,7 @@ module.exports = function (config) {
     // https://github.com/nikku/karma-browserify/tree/v5.1.0#browserify-config
     // DEV: Keep up to date with `gulpfile.js`. If it's too big, then move to a separate file or `package.json`
     browserify: {
-      debug: true,
+      debug: true
     },
 
     // test results reporter to use
