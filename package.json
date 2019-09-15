@@ -39,7 +39,7 @@
       {
         "_comment": "Publish to `gh-pages` after `npm` so we get correct version number",
         "type": "customCommand",
-        "publish": "npm run publish-demo"
+        "publish": "npm run publish-to-gh-pages"
       }
     ]
   }
