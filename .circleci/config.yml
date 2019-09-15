@@ -7,6 +7,10 @@ jobs:
 
     working_directory: ~/sf-digital-services-assignment
 
+    branches:
+      ignore:
+        - gh-pages
+
     steps:
       - checkout
 
