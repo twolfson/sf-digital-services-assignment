@@ -28,7 +28,7 @@ gulp.task('build-html', function buildHtml () {
   return gulp.src('server/views/**/*.pug')
     .pipe(gulpPug({
       data: {
-        pkg
+        pkg: pkg
       }
     }))
     .pipe(gulp.dest('build'))

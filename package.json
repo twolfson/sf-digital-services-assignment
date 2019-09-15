@@ -14,10 +14,11 @@
   "scripts": {
     "build": "gulp build",
     "develop": "gulp develop",
-    "lint": "echo \"Missing linter\" && exit 1",
+    "precheck": "eslint browser/ server/ test/ *.js",
+    "lint": "eslint browser/ server/ test/ *.js --max-warnings 0",
     "publish-to-gh-pages": "ENV=production npm run build && git diff --exit-code && gh-pages --dist build --branch gh-pages",
     "start": "(test -d build/ || npm run build) && serve build",
-    "test": "npm run test-browser && npm run lint",
+    "test": "npm run precheck && npm run test-browser && npm run lint",
     "test-browser": "npm run build && npm run test-karma-single",
     "test-karma-continuous": "karma start --no-single-run",
     "test-karma-develop": "karma start --no-single-run --browsers Chrome",
@@ -27,6 +28,8 @@
   "devDependencies": {
     "browserify": "~16.5.0",
     "chai": "~4.2.0",
+    "eslint": "~6.4.0",
+    "eslint-config-twolfson": "~1.0.0",
     "express": "~4.17.1",
     "foundry": "~4.4.2",
     "foundry-release-git": "~2.0.3",
