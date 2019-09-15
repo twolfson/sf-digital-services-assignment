@@ -42,17 +42,19 @@ Our architecture is as follows:
 - JavaScript, version ECMAScript 5 for both browser and server. We felt this was a good middleground for supporting older browsers without adding too much tooling
     - We did see IE8+ comment on the <https://sf.gov/> site which helped inform our decision
 - [Gulp][] and [Browserify][] for asset bundling. We chose these as they are easy to maintain, iterate on, and they grow well up to a decent level of complexity. Additionally, we wanted to avoid any time sinks with configuring [Webpack][]
-    [Gulp]: https://gulpjs.com/
-    [Browserify]: https://github.com/browserify/browserify
-    [Webpack]: https://webpack.js.org/
 - Vanilla JavaScript with [hyperscript][] for our browser components
-    [hyperscript]: https://github.com/hyperhype/hyperscript
     - We had React on the roadmap but our initial iteration with vanilla JS worked very well and we were running out of time for additional features
     - If this project were to keep on being worked on/growing, we'd likely move to a larger framework (e.g. React)
     - Additional choices on the table: Angular (as team is already familiar with this but they're moving away from it), vanilla JS with jQuery (didn't have complex hierarchies to deal with, doesn't add much nowadays)
 - [Pug][] for server-side templating
     - Is very similar to Slim which is established as a template language in <https://github.com/Exygy/sf-dahlia-web>
     - Prevents missed close tags, which can cause inconsistent rendering
+
+[Gulp]: https://gulpjs.com/
+[Browserify]: https://github.com/browserify/browserify
+[Webpack]: https://webpack.js.org/
+[hyperscript]: https://github.com/hyperhype/hyperscript
+[Pug]: https://pugjs.org/
 
 We made the following architectural decisions:
 
