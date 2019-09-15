@@ -33,6 +33,10 @@ Gist:
 - Missing
     - Error monitoring, usually would use Sentry or similar
     - Analytics, usually would use Google Analytics or Mixpanel
+- Different than professional workflow
+    - Normally would submit a PR and squash commits
+    - Instead adopted personal project open source workflow where I still use `git tag` to tag releases but entire commit history is visible
+    - Rationale: Using squash technique is additional work that might hide my thought and work process
 
 ### Double check we have
 - Tests, including CI
