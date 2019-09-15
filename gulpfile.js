@@ -49,6 +49,7 @@ gulp.task('build-images', function buildImages () {
 
 // https://github.com/substack/node-browserify/tree/12.0.1#api-example
 // https://github.com/substack/watchify/tree/v3.6.1#watchifyb-opts
+// DEV: Keep up to date with `gulpfile.js`. If it's too big, then move to a separate file or `package.json`
 var browserifyObj = browserify({cache: {}, pacakgeCache: {}});
 browserifyObj.add(__dirname + '/browser/js/index.js');
 gulp.task('build-js', function buildJs () {
