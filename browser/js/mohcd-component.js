@@ -61,7 +61,10 @@ exports.initWithLocalData = function (containerEl, data) {
     row._address = row.street_number + ' ' + row.street_name + ' ' + (row.street_type || '');
   });
 
+  // Empty our container
   containerEl.innerHTML = '';
+
+  // == TABLE SECTION ==
   containerEl.appendChild(
     h('table#mohcd-table.table', [
       // TODO: Verify ChromeVox appreciates `thead`, pretty sure it's nice
@@ -103,6 +106,7 @@ exports.initWithLocalData = function (containerEl, data) {
     ])
   );
 
+  // == MAP SECTION ==
   var mapContainerEl = h('div#mohcd-map');
   containerEl.appendChild(mapContainerEl);
   var mohcdMap = L.map(mapContainerEl);
