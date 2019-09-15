@@ -22,6 +22,8 @@ Gist:
     - Is very similar to Slim which is established as a template language in https://github.com/Exygy/sf-dahlia-web
     - Prevents missed close tags, which can cause inconsistent rendering
     - Could set up React server-side templating but we are barely using this as is; not worth the effort
+- Not stripping down data as it's small (35kb gzipped)
+- Leveraging CORS, could self host but it's more work and data goes out of date
 - LiveReload
 - Missing
     - Error monitoring, usually would use Sentry or similar
