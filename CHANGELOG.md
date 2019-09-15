@@ -1,4 +1,6 @@
 # sf-digital-services-assignment
+1.2.0 - Added map
+
 1.1.2 - Added `gh-pages` branch to CircleCI ignore
 
 1.1.1 - Added CircleCI integration
