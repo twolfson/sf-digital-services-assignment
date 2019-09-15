@@ -50,6 +50,7 @@
     "leaflet": "~1.5.1",
     "mocha": "~6.2.0",
     "rimraf": "~3.0.0",
+    "simulant": "~0.2.2",
     "sinon": "~7.4.2",
     "underscore": "~1.9.1",
     "vinyl-buffer": "~1.0.1",

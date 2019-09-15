@@ -17,6 +17,17 @@ describe('An MOHCD table subcomponent with local data', function () {
     var tableEl = testContainer.querySelector('#mohcd-table');
     expect(tableEl.textContent).to.contain('100 Testtest St');
   });
+  it('opens corresponding pop-up on button click', function () {
+    var testContainer = h('div');
+    mohcdComponent.initWithLocalData(testContainer, [
+      _.extend(mohcdTestData[0], {street_number: 100, street_name: 'Testtest', street_type: 'St'})
+    ]);
+    var tableEl = testContainer.querySelector('#mohcd-table');
+    var mapEl = testContainer.querySelector('#mohcd-map');
+    expect(mapEl.textContent).to.not.contain('100 Testtest St');
+    simulant.fire(tableEl.querySelector('button'), 'click');
+    expect(mapEl.textContent).to.contain('100 Testtest St');
+  });
 
   // Error cases
   it('handles missing street types', function () {
