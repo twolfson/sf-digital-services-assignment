@@ -1,4 +1,5 @@
-# sf-digital-services-assignment
+# sf-digital-services-assignment [![Build status](https://circleci.com/gh/twolfson/sf-digital-services-assignment/tree/master.svg?style=svg)](https://circleci.com/gh/twolfson/sf-digital-services-assignment/tree/master)
+
 Website for take-home assignment from [San Francisco Digital Services][]
 
 Demo website: <https://twolfson.github.io/sf-digital-services-assignment/>
