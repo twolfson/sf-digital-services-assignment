@@ -20,6 +20,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "browserify": "~16.5.0",
     "express": "~4.17.1",
     "foundry": "~4.4.2",
     "foundry-release-git": "~2.0.3",
@@ -27,8 +28,15 @@
     "gh-pages": "~2.1.1",
     "gulp": "~4.0.2",
     "gulp-livereload": "~4.0.1",
+    "gulp-notify": "~3.2.0",
     "gulp-pug": "~4.0.1",
-    "rimraf": "~3.0.0"
+    "gulp-sizereport": "~1.2.1",
+    "gulp-uglify": "~3.0.2",
+    "hyperscript": "~2.0.2",
+    "rimraf": "~3.0.0",
+    "vinyl-buffer": "~1.0.1",
+    "vinyl-source-stream": "~2.0.0",
+    "watchify": "~3.11.1"
   },
   "license": "CC0-1.0",
   "private": true,

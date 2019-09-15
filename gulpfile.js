@@ -5,6 +5,7 @@ var gulpLivereload = require('gulp-livereload');
 var gulpNotify = require('gulp-notify');
 var gulpPug = require('gulp-pug');
 var gulpSizereport = require('gulp-sizereport');
+var gulpUglify = require('gulp-uglify');
 var pkg = require('./package.json');
 var rimraf = require('rimraf');
 var server = require('./server/index.js');
