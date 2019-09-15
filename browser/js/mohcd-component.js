@@ -1,6 +1,6 @@
 // Load in our dependencies
 var h = require('hyperscript');
-var L = window.L; // Loaded via Leaflet CDN
+var L = require('leaflet/dist/leaflet.js');
 
 // Define our constants
 var MOHCD_DATA_URL = 'https://data.sfgov.org/resource/9rdx-httc.json';

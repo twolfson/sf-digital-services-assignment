@@ -1,6 +1,7 @@
 // Load in our dependencies
 var browserify = require('browserify');
 var gulp = require('gulp');
+var gulpConcat = require('gulp-concat');
 var gulpLivereload = require('gulp-livereload');
 var gulpNotify = require('gulp-notify');
 var gulpPug = require('gulp-pug');
@@ -36,16 +37,26 @@ gulp.task('build-html', function buildHtml() {
 });
 
 gulp.task('build-css', function buildImages() {
-  return gulp.src('browser/css/**/*')
-    .pipe(gulp.dest('build/css'))
-    .pipe(gulpLivereload());
+  return gulp.src([
+        require.resolve('leaflet/dist/leaflet.css'),
+        'browser/css/**/*.css',
+      ])
+      .pipe(gulpConcat('index.css'))
+      .pipe(gulp.dest('build/css'))
+      .pipe(gulpLivereload());
 });
 
-gulp.task('build-images', function buildImages() {
-  return gulp.src('browser/images/**/*')
-    .pipe(gulp.dest('build/images'))
-    .pipe(gulpLivereload());
-});
+gulp.task('build-images', gulp.parallel([
+  function leafletImages() {
+    return gulp.src(require.resolve('leaflet/dist/images/marker-icon.png') + '/../**/*')
+      .pipe(gulp.dest('build/css/images'));
+  },
+  function buildImages() {
+    return gulp.src('browser/images/**/*')
+      .pipe(gulp.dest('build/images'))
+      .pipe(gulpLivereload());
+  }
+]));
 
 // https://github.com/substack/node-browserify/tree/12.0.1#api-example
 // https://github.com/substack/watchify/tree/v3.6.1#watchifyb-opts
