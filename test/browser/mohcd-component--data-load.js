@@ -49,8 +49,24 @@ describe('An MOHCD component loading data', function () {
   });
 
   describe('with an unsuccessful load', function () {
+    createSinonServer([
+      ['GET', 'https://data.sfgov.org/resource/9rdx-httc.json',
+        [500, {}, 'Internal server error']]
+    ]);
+    before(function stubConsoleError () {
+      sinon.stub(console, 'error');
+    });
+    initMohcdComponent();
+    after(function cleanup () {
+      console.error.restore();
+    });
+
     it('renders an error', function () {
-      // TODO: Complete test
+      // Sanity check we hit our fake server
+      expect(this.sinonServer.requests).to.have.length(1);
+
+      // Verify our expected content exists
+      expect(this.testContainer.textContent).to.contain('but received 500');
     });
   });
 });
