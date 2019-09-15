@@ -24,6 +24,6 @@ gulp.task('develop', gulp.series('build', function develop () {
   gulp.watch('server/views/**/*.pug', gulp.parallel('build-html'));
 
   // Start our LiveReload server and development server
-  gulpLivereload();
+  gulpLivereload.listen();
   server.start();
 }));
