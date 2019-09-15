@@ -1,4 +1,6 @@
 # sf-digital-services-assignment
+1.1.1 - Added CircleCI integration
+
 1.1.0 - Added table display and tests
 
 1.0.2 - Fixed invalid command in `foundry` release
