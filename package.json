@@ -21,6 +21,9 @@
   "dependencies": {},
   "devDependencies": {
     "express": "~4.17.1",
+    "foundry": "~4.4.2",
+    "foundry-release-git": "~2.0.3",
+    "foundry-release-npm": "~2.0.2",
     "gh-pages": "~2.1.1",
     "gulp": "~4.0.2",
     "gulp-livereload": "~4.0.1",
@@ -28,5 +31,16 @@
     "rimraf": "~3.0.0"
   },
   "license": "CC0-1.0",
-  "private": true
+  "private": true,
+  "foundry": {
+    "releaseCommands": [
+      "foundry-release-npm",
+      "foundry-release-git",
+      {
+        "_comment": "Publish to `gh-pages` after `npm` so we get correct version number",
+        "type": "customCommand",
+        "publish": "npm run publish-demo"
+      }
+    ]
+  }
 }
