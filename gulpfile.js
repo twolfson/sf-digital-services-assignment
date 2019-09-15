@@ -3,6 +3,7 @@ const gulp = require('gulp');
 const gulpLivereload = require('gulp-livereload');
 const gulpPug = require('gulp-pug');
 const pkg = require('./package.json');
+const serve = require('serve');
 
 // Define our tasks
 gulp.task('build-html', function buildHtml () {
