@@ -1,6 +1,8 @@
 # sf-digital-services-assignment
 Website for take-home assignment from [San Francisco Digital Services][]
 
+Demo website: <https://twolfson.github.io/sf-digital-services-assignment/>
+
 [San Francisco Digital Services]: https://digitalservices.sfgov.org/
 
 ## Getting started
