@@ -29,6 +29,13 @@ Our webpage will be accessible at <http://localhost:3000/>
     - One way to fix this would be a location lookup based on the street address but we felt this was low priority for the exercise
 
 ## Documentation
+### File structure
+- `browser/` - Files loaded into the browser (e.g. `css/`, `js/`)
+- `build/` - Assets compiled via `gulp` for development and distribution
+- `server/` - Files used to run our server and generate HTTP responses
+    - In an MVC application, there would be a lot more files but this is a very browser heavy application
+- `test/` - Collection of tests for both `browser/` and `server/`
+
 ### Architecture
 Our architecture is as follows:
 
@@ -70,19 +77,54 @@ Our release workflow is different from our typical professional one:
 - Instead adopted typical solo contributor open source workflow where I still use `git tag` to tag releases but entire commit history is visible
 - Rationale: Using squash technique is additional work that might hide my thought and work process
 
-### Double check we have
-- LiveReload
-- Document `publish-to-gh-pages` and releasing
-- [x] Tests, including CI
-    - Loading data success/failure (sinon mocking)
-    - Showing expected data, not showing unexpected data
-- [x] Link to GitHub pages if we go that route
-- [n] Form of cache busting for assets (either timestamp or md5)
-- [n] CSS that matches
-- [x] Bonus feature
-- [x] Viewport support, or conclude it makes less sense for tables
-- Handled all TODOs
-- [x] a11y double check
+### Development
+To run our development server, run the following:
+
+```bash
+npm run develop
+```
+
+#### LiveReload
+This script includes running a [LiveReload][] server so [LiveReload][] browser extensions will work here
+
+[LiveReload]: http://livereload.com/
+
+### Testing
+To run our full test suite, run the following:
+
+```bash
+npm test
+```
+
+Below are specific test commands:
+
+- `npm run lint`, runs linter
+- `npm run test-karma-continuous`, runs browser tests continuously with file watcher
+- `npm run test-karma-develop`, runs browser tests with a visible browser for debugging
+
+### Releasing
+To publish a new release, run the following:
+
+```bash
+# Update the CHANGELOG with a new semantic version
+$EDITOR CHANGELOG.md
+
+# Install foundry.cli if it's not yet installed
+npm install -g foundry.cli
+
+# Stage our CHANGELOG changes
+git add -p
+
+# Publish a new release
+foundry release <semver>
+
+# Verify our release looks good on GitHub pages
+## Linux
+xdg-open "https://twolfson.github.io/sf-digital-services-assignment/"
+
+## OS X
+open "https://twolfson.github.io/sf-digital-services-assignment/"
+```
 
 ## License
 As of Sep 14 2019, Todd Wolfson has relesaed this repository and its contents to the public domain.
