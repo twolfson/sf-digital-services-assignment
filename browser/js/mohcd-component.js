@@ -90,6 +90,8 @@ exports.initWithLocalData = function (containerEl, data) {
           h('td', [
             h('button.btn.btn-info', {
               onclick: function () {
+                // An alternative to direct references would be a global pub/sub singleton (e.g. mediator pattern)
+                //   However, this is easier to implement and debug for now
                 var marker = row._marker;
                 // `openPopup` will automatically pan if marker is out of frame
                 marker.openPopup();
