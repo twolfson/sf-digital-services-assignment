@@ -45,6 +45,7 @@
     "karma-mocha": "~1.3.0",
     "mocha": "~6.2.0",
     "rimraf": "~3.0.0",
+    "sinon": "~7.4.2",
     "vinyl-buffer": "~1.0.1",
     "vinyl-source-stream": "~2.0.0",
     "watchify": "~3.11.1"
