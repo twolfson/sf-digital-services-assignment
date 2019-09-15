@@ -107,7 +107,12 @@ exports.initWithLocalData = function (containerEl, data) {
   );
 
   // == MAP SECTION ==
-  var mapContainerEl = h('div#mohcd-map');
+  var mapContainerEl = h('div#mohcd-map', {
+    attrs: {
+      role: 'application',
+      'aria-roledescription': 'Interactive map of affordable housing properties'
+    }
+  });
   containerEl.appendChild(mapContainerEl);
   var mohcdMap = L.map(mapContainerEl);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

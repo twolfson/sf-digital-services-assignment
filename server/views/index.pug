@@ -13,18 +13,24 @@ html(lang="en")
     //- JS
     script(src="js/index.js")
 
-    title SF MOHCD affordable rental analysis
+    title SF MOHCD affordable rental portfolio
   body
     .container
       h1
         = "SF "
-        abbr(title="Mayor's Office of Housing and Community Development") MOHCD
-        = " affordable rental analysis"
+        abbr(aria-label="Mayor's Office of Housing and Community Development" title="Mayor's Office of Housing and Community Development") MOHCD
+        = " affordable rental portfolio"
       p
-        | This webpage presents an analysis of the data from SF's MOHCD's dataset on affordable housing
+        = "This webpage presents a cross-section of the data from SF's "
+        span(aria-label="Mayor's Office of Housing and Community Development's") MOHCD's
+        = " dataset on affordable housing."
+        br
+        | We're providing both tabular and map based formats for exploration.
         br
         = "The original dataset can be found on "
-        a(href="https://data.sfgov.org/Housing-and-Buildings/Mayor-s-Office-of-Housing-and-Community-Developmen/9rdx-httc") DataSF's website
+        a(href="https://data.sfgov.org/Housing-and-Buildings/Mayor-s-Office-of-Housing-and-Community-Developmen/9rdx-httc")
+          span(aria-label="Data SF's") DataSF's
+          = " website."
       p#mohcd-container Loading content...
 
       //- Define a common footer
