@@ -36,22 +36,23 @@ Gist:
 - Missing
     - Error monitoring, usually would use Sentry or similar
     - Analytics, usually would use Google Analytics or Mixpanel
+    - Cache busting, ran out of time for the assignment. An outline would be updating `gulpfile.js` to process HTML after CSS and JS, then using the MD5 digests of those files in the template rendering
 - Different than professional workflow
     - Normally would submit a PR and squash commits
     - Instead adopted personal project open source workflow where I still use `git tag` to tag releases but entire commit history is visible
     - Rationale: Using squash technique is additional work that might hide my thought and work process
 
 ### Double check we have
-- Tests, including CI
+- [x] Tests, including CI
     - Loading data success/failure (sinon mocking)
     - Showing expected data, not showing unexpected data
-- Link to GitHub pages if we go that route
-- Form of cache busting for assets (either timestamp or md5)
-- CSS that matches
-- Bonus feature
-- Viewport support, or conclude it makes less sense for tables
+- [x] Link to GitHub pages if we go that route
+- [n] Form of cache busting for assets (either timestamp or md5)
+- [n] CSS that matches
+- [x] Bonus feature
+- [x] Viewport support, or conclude it makes less sense for tables
 - Handled all TODOs
-- a11y double check
+- [x] a11y double check
 
 ## License
 As of Sep 14 2019, Todd Wolfson has relesaed this repository and its contents to the public domain.

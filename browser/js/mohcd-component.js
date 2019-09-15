@@ -67,14 +67,12 @@ exports.initWithLocalData = function (containerEl, data) {
   // == TABLE SECTION ==
   containerEl.appendChild(
     h('table#mohcd-table.table', [
-      // TODO: Verify ChromeVox appreciates `thead`, pretty sure it's nice
       h('thead', [
         h('tr', [
           h('th', 'Address'),
           h('th', 'Neighborhood'),
           h('th', 'Affordable units'),
           h('th', 'Total units'),
-          // TODO: Ensure aria reads this as `%` (not percent sign or similar)
           h('th', '% affordable units'),
           h('th', 'Year affordability began'),
           h('th', '')
@@ -85,7 +83,6 @@ exports.initWithLocalData = function (containerEl, data) {
         return h('tr', [
           h('td', row._address),
           h('td', row.neighborhood),
-          // TODO: Is data practical in this format for a11y? (e.g. 243 linked to column)
           h('td', row.affordable_units),
           h('td', row.total_units),
           h('td', row._percentAffordable.toFixed(1) + '%'),
