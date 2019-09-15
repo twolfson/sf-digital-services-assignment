@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', function handleDOMContentLoaded (evt
   }
   function handleData(data) {
     containerEl.textContent = JSON.stringify(data, null, 2);
-    containerEl.style.cssText = 'white-space: pre; font-family: monospace';
+    containerEl.style.cssText = 'white-space: pre; font-family: monospace; height: 200px; overflow: scroll';
   }
 
   // Load our dataset
