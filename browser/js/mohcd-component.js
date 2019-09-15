@@ -70,7 +70,8 @@ exports.initWithLocalData = function (containerEl, data) {
           h('th', 'Total units'),
           // TODO: Ensure aria reads this as `%` (not percent sign or similar)
           h('th', '% affordable units'),
-          h('th', 'Year affordability began')
+          h('th', 'Year affordability began'),
+          h('th', '')
         ])
       ]),
       // DEV: Look at `test/test-files/9rdx-httc-reduced.json` for reference entries
@@ -82,8 +83,17 @@ exports.initWithLocalData = function (containerEl, data) {
           h('td', row.affordable_units),
           h('td', row.total_units),
           h('td', row._percentAffordable.toFixed(1) + '%'),
-          h('td', row.year_affordability_began)
-        ]);
+          h('td', row.year_affordability_began),
+          h('td', [
+            h('button.btn.btn-info', {
+              onclick: function () {
+                var marker = row._marker;
+                // `openPopup` will automatically pan if marker is out of frame
+                marker.openPopup();
+              }
+            }, 'View on map')
+          ])
+        ])
       }))
     ])
   );
@@ -120,5 +130,8 @@ exports.initWithLocalData = function (containerEl, data) {
       'Year affordability began: ' + row.year_affordability_began
     ]));
     marker.addTo(mohcdMap);
+
+    // Save our marker to linking subcomponents
+    row._marker = marker;
   });
 };
