@@ -16,7 +16,7 @@
     "develop": "gulp develop",
     "precheck": "eslint browser/ server/ test/ *.js",
     "lint": "eslint browser/ server/ test/ *.js --max-warnings 0",
-    "publish-to-gh-pages": "ENV=production npm run build && git diff --exit-code && cp -r .circleci build && gh-pages --dist build --branch gh-pages",
+    "publish-to-gh-pages": "ENV=production npm run build && git diff --exit-code && cp -r .circleci build && gh-pages --dotfiles --dist build --branch gh-pages",
     "start": "(test -d build/ || npm run build) && serve build",
     "test": "npm run precheck && npm run test-browser && npm run lint",
     "test-browser": "npm run build && npm run test-karma-single",
